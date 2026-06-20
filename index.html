@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jet Set Pets – Automation Setup Guide v2</title>
+<title>Jet Set Pets – Automation Setup Guide v3</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 :root {
@@ -18,7 +18,6 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px;}
-/* HERO */
 .hero{background:linear-gradient(135deg,var(--navy) 0%,#2d4a8a 60%,#1e3a6e 100%);color:white;padding:60px 40px 50px;text-align:center;position:relative;overflow:hidden;}
 .hero::before{content:'🐾';position:absolute;font-size:180px;opacity:.06;top:-20px;right:-20px;transform:rotate(15deg);}
 .hero-badge{display:inline-block;background:rgba(249,115,22,.2);border:1px solid rgba(249,115,22,.5);color:#fb923c;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px;}
@@ -28,19 +27,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 .hero-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:32px;}
 .stat-pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:10px 20px;border-radius:30px;font-size:14px;font-weight:500;}
 .stat-pill strong{color:#fb923c;}
-/* LAYOUT */
 .container{max-width:860px;margin:0 auto;padding:0 20px;}
-/* SECTION TITLES */
 .section-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--paw);margin-bottom:8px;display:block;}
 .section-title{font-size:clamp(22px,4vw,30px);font-weight:700;color:var(--navy);margin-bottom:12px;}
 .section-desc{color:var(--text-muted);font-size:15px;max-width:640px;margin-bottom:32px;}
-/* CARDS */
 .card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:16px;}
 .card-sm{padding:20px;}
-/* STEP SECTIONS */
 .step-section{padding:48px 0;}
 .step-section+.step-section{border-top:1px solid var(--border);}
-/* NODE CARDS */
 .node-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:0;margin-bottom:14px;overflow:hidden;transition:box-shadow .2s;}
 .node-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);}
 .node-header{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;user-select:none;}
@@ -54,7 +48,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 .node-body .warn-box{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:12px 16px;margin-top:12px;font-size:14px;color:#78350f;}
 .expand-icon{font-size:14px;color:var(--slate);transition:transform .2s;}
 .node-header.active .expand-icon{transform:rotate(180deg);}
-/* COLORS */
 .color-trigger{background:#ede9fe;color:#6d28d9;} .badge-trigger{background:#ede9fe;color:#6d28d9;}
 .color-db{background:#dbeafe;color:#1d4ed8;}     .badge-db{background:#dbeafe;color:#1d4ed8;}
 .color-loop{background:#fef3c7;color:#92400e;}   .badge-loop{background:#fef3c7;color:#92400e;}
@@ -64,7 +57,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 .color-image{background:#e0f2fe;color:#075985;}  .badge-image{background:#e0f2fe;color:#075985;}
 .color-ai{background:#f3e8ff;color:#581c87;}     .badge-ai{background:#f3e8ff;color:#581c87;}
 .color-wp{background:#e0fdf4;color:#065f46;}     .badge-wp{background:#e0fdf4;color:#065f46;}
-/* ALERTS */
+.color-wait{background:#fce7f3;color:#9d174d;}   .badge-wait{background:#fce7f3;color:#9d174d;}
 .alert{display:flex;gap:14px;align-items:flex-start;padding:16px 20px;border-radius:12px;margin-bottom:16px;font-size:15px;}
 .alert-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
 .alert-success{background:var(--green-light);border:1px solid #86efac;color:#14532d;}
@@ -72,19 +65,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 .alert-info{background:var(--sky-light);border:1px solid #93c5fd;color:#1e3a8a;}
 .alert-orange{background:var(--paw-light);border:1px solid #fdba74;color:#7c2d12;}
 .alert-purple{background:var(--purple-light);border:1px solid #c4b5fd;color:#4c1d95;}
-/* CHECKLIST */
-.checklist{list-style:none;}
-.checklist li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);font-size:15px;}
-.checklist li:last-child{border-bottom:none;}
-.check-box{width:22px;height:22px;border:2px solid var(--border);border-radius:6px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;background:white;}
-.check-box.done{background:var(--green);border-color:var(--green);color:white;}
-/* TABLE */
 .data-table{width:100%;border-collapse:collapse;font-size:14px;}
 .data-table th{background:var(--navy);color:white;padding:10px 14px;text-align:left;font-weight:600;}
 .data-table td{padding:10px 14px;border-bottom:1px solid var(--border);}
 .data-table tr:last-child td{border-bottom:none;}
 .data-table tr:nth-child(even) td{background:var(--bg);}
-/* TIMELINE */
 .timeline{position:relative;padding-left:36px;}
 .timeline::before{content:'';position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--border);}
 .tl-item{position:relative;margin-bottom:24px;}
@@ -92,27 +77,18 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 .tl-title{font-weight:700;color:var(--navy);margin-bottom:4px;font-size:15px;}
 .tl-desc{font-size:14px;color:var(--text-muted);}
 .tl-time{display:inline-block;font-size:12px;font-weight:600;color:var(--paw);background:var(--paw-light);padding:2px 10px;border-radius:10px;margin-bottom:6px;}
-/* TOC */
 .toc{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0;}
 .toc a{background:var(--white);border:1px solid var(--border);color:var(--navy);text-decoration:none;font-size:13px;font-weight:600;padding:7px 16px;border-radius:20px;transition:all .15s;}
 .toc a:hover{background:var(--paw);border-color:var(--paw);color:white;}
-/* FIELD TABLE */
-.field-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;align-items:start;}
-.field-name{font-weight:600;color:var(--navy);}
-.field-type{color:var(--slate);}
-.field-note{font-size:13px;color:var(--text-muted);}
 .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;margin-right:4px;}
 .tag-green{background:var(--green-light);color:var(--green);}
 .tag-blue{background:var(--sky-light);color:#1d4ed8;}
 .tag-amber{background:var(--amber-light);color:var(--amber);}
 .tag-purple{background:var(--purple-light);color:var(--purple);}
-/* CRED ROW */
-.cred-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;}
+.cred-row{display:grid;grid-template-columns:1fr 2fr;gap:14px;align-items:start;padding:16px 0;border-bottom:1px solid var(--border);font-size:14px;}
 .cred-row:last-child{border-bottom:none;}
-.cred-label{font-weight:600;color:var(--navy);}
+.cred-label{font-weight:700;color:var(--navy);font-size:15px;}
 .cred-link{color:var(--sky);font-size:13px;}
-.cred-badge{font-size:11px;padding:3px 10px;border-radius:10px;font-weight:700;white-space:nowrap;background:var(--paw-light);color:var(--paw);border:1px solid #fed7aa;}
-/* AI CHOICE CARDS */
 .ai-choice{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
 .ai-card{border-radius:14px;padding:20px;border:2px solid transparent;}
 .ai-card.gemini{background:#f0fdf4;border-color:#86efac;}
@@ -122,39 +98,31 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);lin
 .ai-card.openai .ai-card-title{color:#6d28d9;}
 .ai-card ul{font-size:13px;padding-left:16px;color:var(--text-muted);}
 .ai-card li{margin-bottom:4px;}
-/* CODE BLOCK */
-.code-block{background:#0f172a;color:#e2e8f0;font-family:'DM Mono',monospace;font-size:13px;padding:20px;border-radius:12px;overflow-x:auto;line-height:1.6;margin:12px 0;}
-/* FINAL CHECKLIST */
 .final-check{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
 .fc-item{display:flex;gap:10px;align-items:center;font-size:14px;padding:8px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all .15s;}
 .fc-item:hover{background:var(--green-light);}
 .fc-check{width:18px;height:18px;border:2px solid var(--border);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:white;}
 .fc-item.checked .fc-check{background:var(--green);border-color:var(--green);color:white;}
 .fc-item.checked{background:var(--green-light);border-color:#86efac;}
-/* FOOTER */
 footer{background:var(--navy);color:rgba(255,255,255,.7);text-align:center;padding:30px 20px;font-size:14px;}
-footer a{color:#fb923c;}
-/* STEP NUMBER BADGE */
-.step-num-badge{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--paw);color:white;border-radius:50%;font-weight:700;font-size:14px;flex-shrink:0;margin-right:12px;}
-/* IMPORTANT BOX */
 .important-box{background:linear-gradient(135deg,#fff7ed,#fef3c7);border:2px solid #f97316;border-radius:14px;padding:20px 24px;margin:20px 0;}
 .important-box h4{color:#9a3412;font-size:16px;font-weight:700;margin-bottom:8px;}
 .important-box p,.important-box li{color:#78350f;font-size:14px;}
 .important-box ol{padding-left:20px;line-height:2;}
-/* BIG SECTION DIVIDER */
 .big-divider{border:none;border-top:3px solid var(--border);margin:0;}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:var(--paw);color:white;border-radius:50%;font-weight:700;font-size:13px;flex-shrink:0;margin-right:8px;}
+code{background:#f1f5f9;padding:1px 6px;border-radius:4px;font-family:'DM Mono',monospace;font-size:13px;}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">Updated Guide · Version 2.0</div>
+  <div class="hero-badge">Updated Guide · Version 3.0</div>
   <h1>🐾 <span>Jet Set Pets</span><br>Event Automation Setup Guide</h1>
   <p>A step-by-step guide written in plain English. No tech experience needed. If you can follow a recipe, you can build this.</p>
   <div class="hero-stats">
     <div class="stat-pill">⏱ Setup time: <strong>8–12 hours</strong></div>
-    <div class="stat-pill">🤖 AI: <strong>Gemini 2.5 Flash</strong> (or OpenAI)</div>
+    <div class="stat-pill">🤖 AI: <strong>Gemini 2.5 Flash</strong></div>
     <div class="stat-pill">📅 Runs <strong>Mon / Wed / Fri at 9 AM</strong></div>
     <div class="stat-pill">🏙️ Cities ready to scale: <strong>15+</strong></div>
   </div>
@@ -162,18 +130,17 @@ footer a{color:#fb923c;}
 
 <div class="container">
 
-<!-- TABLE OF CONTENTS -->
+<!-- TOC -->
 <div class="step-section">
   <span class="section-label">Contents</span>
   <div class="section-title">What's in this guide?</div>
-  <p class="section-desc">Click any section to jump straight to it. We recommend reading from top to bottom the first time.</p>
+  <p class="section-desc">Click any section to jump straight to it. We recommend reading top to bottom the first time.</p>
   <div class="toc">
     <a href="#what-it-does">What does this robot do?</a>
-    <a href="#airtable">Step 1: Build your Airtable</a>
-    <a href="#credentials">Step 2: Get your API keys</a>
-    <a href="#nodes">Step 3: Every node explained</a>
+    <a href="#credentials">Step 1: Get your Airtable API key</a>
+    <a href="#nodes">Step 2: Every node explained</a>
     <a href="#ai-brain">How the AI "sees" images</a>
-    <a href="#running">Step 4: Run the workflow</a>
+    <a href="#running">Step 3: Run the workflow</a>
     <a href="#timeline">Setup timeline</a>
     <a href="#troubleshooting">Troubleshooting</a>
     <a href="#checklist">Final checklist</a>
@@ -186,257 +153,108 @@ footer a{color:#fb923c;}
 <div class="step-section" id="what-it-does">
   <span class="section-label">Overview</span>
   <div class="section-title">What does this robot actually do?</div>
-  <p class="section-desc">Before we build anything, let's understand what we're building and why it solves your problem 100%.</p>
+  <p class="section-desc">Before touching anything, let's understand the full journey of one Instagram post through the system — start to finish.</p>
 
   <div class="card">
-    <p style="font-size:15px;color:var(--text-muted);margin-bottom:16px;"><strong style="color:var(--navy);">The problem right now:</strong> You have to manually visit 50+ Instagram accounts, read each post, figure out if it's an event, copy all the details, check if the event is already in your database, find or create the venue and organizer, and type everything into Airtable. For 15 cities. Multiple times a week. This is hundreds of hours of copy-pasting.</p>
-    <p style="font-size:15px;color:var(--text-muted);"><strong style="color:var(--navy);">What this robot does instead:</strong> Three times a week, it wakes up automatically, visits every Instagram account on your list, downloads the images, sends them to an AI that reads the flyers and posts like a human would, extracts all the event details, checks your database for duplicates, creates the venue and organizer if they don't exist, saves the event to Airtable, and creates a draft on your WordPress website. You just review and publish.</p>
+    <p style="font-size:15px;color:var(--text-muted);margin-bottom:16px;"><strong style="color:var(--navy);">The problem this solves:</strong> Manually visiting dozens of Instagram accounts, reading every post, deciding what's a real event, copying details, checking for duplicates, creating venues and organizers, and typing it all into Airtable — for every city, multiple times a week.</p>
+    <p style="font-size:15px;color:var(--text-muted);"><strong style="color:var(--navy);">What the robot does instead:</strong> Three times a week, it wakes up on its own, checks every account on your list, downloads the flyer images, sends them to Gemini AI to read like a human would, pulls out every event detail, checks for duplicates, creates the venue and organizer records automatically if needed, saves the finished event to Airtable, and creates a WordPress draft. You only review and publish.</p>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <div style="font-weight:700;font-size:16px;color:var(--navy);margin-bottom:16px;">The complete flow, start to finish:</div>
+    <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--text-muted);font-family:'DM Mono',monospace;line-height:2.2;">
+      Schedule Trigger → Get Resources → Loop Accounts → Apify Instagram Scrape → Verify Posts<br>
+      → Loop Posts → Download Flyer → If Image OK → Resize → Rename for SEO<br>
+      → Prepare for Gemini Vision → Wait 30s → Gemini AI Agent → Parse Output → If Is Event<br>
+      → Check Duplicate → If Not Duplicate → Search/Create Venue → Search/Create Organizer<br>
+      → Format Event Name → Create Event in Airtable → Prep WordPress Payload → Upload Image<br>
+      → Merge → Attach Image → Create WordPress Draft → Update "Checked This Week" → Loop Back
+    </div>
   </div>
 
   <div class="alert alert-success" style="margin-top:16px;">
     <div class="alert-icon">✅</div>
-    <div><strong>Why this solves the problem 100%:</strong> Every single manual task you described — visiting Instagram, reading flyers, checking duplicates, creating venues, formatting event names, creating WordPress drafts — is handled by a specific node in this workflow. There is a node for each step. Nothing falls through the cracks.</div>
-  </div>
-
-  <!-- SIMPLE FLOW -->
-  <div class="card" style="margin-top:20px;">
-    <div style="font-weight:700;font-size:16px;color:var(--navy);margin-bottom:16px;">The journey of one Instagram post through the workflow:</div>
-    <div style="display:flex;flex-direction:column;gap:8px;">
-      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#f8fafc;border-radius:10px;border:1px solid var(--border);">
-        <div style="width:28px;height:28px;background:#ede9fe;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#6d28d9;flex-shrink:0;">1</div>
-        <div><strong>Alarm goes off</strong> at 9 AM Mon/Wed/Fri → robot wakes up</div>
-      </div>
-      <div style="text-align:center;color:var(--slate);font-size:18px;">↓</div>
-      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#f8fafc;border-radius:10px;border:1px solid var(--border);">
-        <div style="width:28px;height:28px;background:#dbeafe;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#1d4ed8;flex-shrink:0;">2</div>
-        <div><strong>Opens Airtable</strong> → gets list of active "Great" Instagram accounts</div>
-      </div>
-      <div style="text-align:center;color:var(--slate);font-size:18px;">↓</div>
-      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#f8fafc;border-radius:10px;border:1px solid var(--border);">
-        <div style="width:28px;height:28px;background:#fce7f3;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#9d174d;flex-shrink:0;">3</div>
-        <div><strong>Visits Instagram</strong> (via Apify) → collects recent posts + images</div>
-      </div>
-      <div style="text-align:center;color:var(--slate);font-size:18px;">↓</div>
-      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#f8fafc;border-radius:10px;border:1px solid var(--border);">
-        <div style="width:28px;height:28px;background:#e0f2fe;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#075985;flex-shrink:0;">4</div>
-        <div><strong>Downloads the image</strong> → resizes it → renames it for Google SEO</div>
-      </div>
-      <div style="text-align:center;color:var(--slate);font-size:18px;">↓</div>
-      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#faf5ff;border-radius:10px;border:1px solid #c4b5fd;">
-        <div style="width:28px;height:28px;background:#f3e8ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#581c87;flex-shrink:0;">5</div>
-        <div><strong>Gemini AI reads the flyer + caption</strong> → extracts event name, date, time, venue, description</div>
-      </div>
-      <div style="text-align:center;color:var(--slate);font-size:18px;">↓</div>
-      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#f8fafc;border-radius:10px;border:1px solid var(--border);">
-        <div style="width:28px;height:28px;background:#fee2e2;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#991b1b;flex-shrink:0;">6</div>
-        <div><strong>Checks for duplicates</strong> in your Events table → skips if already there</div>
-      </div>
-      <div style="text-align:center;color:var(--slate);font-size:18px;">↓</div>
-      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#f8fafc;border-radius:10px;border:1px solid var(--border);">
-        <div style="width:28px;height:28px;background:#dbeafe;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#1d4ed8;flex-shrink:0;">7</div>
-        <div><strong>Creates venue & organizer</strong> in Airtable if they don't exist yet</div>
-      </div>
-      <div style="text-align:center;color:var(--slate);font-size:18px;">↓</div>
-      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#f0fdf4;border-radius:10px;border:1px solid #86efac;">
-        <div style="width:28px;height:28px;background:#dcfce7;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#14532d;flex-shrink:0;">8</div>
-        <div><strong>Saves event to Airtable + creates WordPress draft</strong> → you review & publish 🎉</div>
-      </div>
-    </div>
+    <div><strong>Why this solves the problem completely:</strong> Every manual task you described has its own dedicated node — visiting Instagram, reading flyers, checking duplicates, creating venues and organizers, formatting names, creating WordPress drafts. Nothing is left out, and nothing depends on you remembering to do it.</div>
   </div>
 </div>
 
 <hr class="big-divider">
 
-<!-- AIRTABLE SETUP -->
-<div class="step-section" id="airtable">
-  <span class="section-label">Step 1</span>
-  <div class="section-title">Build your Airtable database</div>
-  <p class="section-desc">Airtable is like a smart spreadsheet. You need to create 4 tables inside one base. The robot will read from and write to these tables automatically.</p>
-
-  <div class="alert alert-info">
-    <div class="alert-icon">ℹ️</div>
-    <div><strong>New to Airtable?</strong> Go to <a href="https://airtable.com" target="_blank" style="color:#1e40af;">airtable.com</a> → sign up for free → click "Add a base" → name it <strong>"Jet Set Pets Events"</strong>. Then create the 4 tables below by clicking the "+" tab button at the bottom.</div>
-  </div>
-
-  <!-- TABLE 1: Event Resources -->
-  <div class="card" style="margin-bottom:20px;">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-      <div style="width:36px;height:36px;background:var(--paw-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">📋</div>
-      <div>
-        <div style="font-weight:700;font-size:17px;color:var(--navy);">Table 1: Event Resources</div>
-        <div style="font-size:13px;color:var(--text-muted);">Your list of Instagram accounts to check. The robot reads from this table first.</div>
-      </div>
-    </div>
-    <div class="field-row" style="font-weight:700;font-size:12px;color:var(--slate);text-transform:uppercase;letter-spacing:1px;">
-      <div>Field name</div><div>Field type</div><div>Notes</div>
-    </div>
-    <div class="field-row"><div class="field-name">Name</div><div class="field-type">Single line text</div><div class="field-note">e.g. "Boris &amp; Horton"</div></div>
-    <div class="field-row"><div class="field-name">Instagram URL</div><div class="field-type">URL</div><div class="field-note">Full URL e.g. https://www.instagram.com/borisandhorton</div></div>
-    <div class="field-row">
-      <div class="field-name">Is Active</div>
-      <div class="field-type">Checkbox</div>
-      <div class="field-note"><span class="tag tag-green">Must be ✓ checked</span> for this account to be scraped. Untick to pause any account without deleting it.</div>
-    </div>
-    <div class="field-row">
-      <div class="field-name">Info Quality</div>
-      <div class="field-type">Single select</div>
-      <div class="field-note">
-        <span class="tag tag-green">Great</span> <span class="tag tag-blue">Good</span> <span class="tag tag-amber">Check monthly</span>
-        <div style="margin-top:6px;"><strong>Only "Great" gets checked automatically by the robot.</strong> "Good" and "Check monthly" are skipped during regular runs — use those for accounts that post events less often.</div>
-      </div>
-    </div>
-    <div class="field-row"><div class="field-name">Last Checked</div><div class="field-type">Date</div><div class="field-note">The robot updates this automatically after each run — you don't need to fill this in</div></div>
-    <div class="field-row"><div class="field-name">Notes / Instructions</div><div class="field-type">Long text</div><div class="field-note">Any special notes about this account</div></div>
-
-    <div class="important-box" style="margin-top:16px;">
-      <h4>⚠️ Important: How to mark a resource as ready to be scraped</h4>
-      <p>For the robot to check an Instagram account, that row in your Event Resources table MUST have:</p>
-      <ol style="margin-top:8px;">
-        <li><strong>Is Active checkbox = ticked ✓</strong></li>
-        <li><strong>Info Quality = "Great"</strong></li>
-      </ol>
-      <p style="margin-top:8px;">Any URL that is ready to be scraped must have BOTH of these set. If either one is missing, the robot will skip that account completely. This is by design — it keeps your system fast and focused on your best sources.</p>
-    </div>
-  </div>
-
-  <!-- TABLE 2: Events and Experiences -->
-  <div class="card" style="margin-bottom:20px;">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-      <div style="width:36px;height:36px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">🎉</div>
-      <div>
-        <div style="font-weight:700;font-size:17px;color:var(--navy);">Table 2: Events and Experiences</div>
-        <div style="font-size:13px;color:var(--text-muted);">This is where all found events get saved</div>
-      </div>
-    </div>
-    <div class="field-row" style="font-weight:700;font-size:12px;color:var(--slate);text-transform:uppercase;letter-spacing:1px;">
-      <div>Field name</div><div>Field type</div><div>Notes</div>
-    </div>
-    <div class="field-row"><div class="field-name">Event Name</div><div class="field-type">Single line text</div><div class="field-note">Auto-formatted by the robot with date and city</div></div>
-    <div class="field-row"><div class="field-name">Start Date</div><div class="field-type">Date</div><div class="field-note">Event date</div></div>
-    <div class="field-row"><div class="field-name">End Date</div><div class="field-type">Date</div><div class="field-note">Usually same as start date — auto-filled</div></div>
-    <div class="field-row">
-      <div class="field-name">Event Start Time</div>
-      <div class="field-type" style="color:#d97706;font-weight:600;">⚠️ Single line text</div>
-      <div class="field-note"><span class="tag tag-amber">Updated!</span> This is now plain text, NOT a Date/Time field. Set it to "Single line text" when creating this field. Time will be stored as text like "7:00 PM".</div>
-    </div>
-    <div class="field-row">
-      <div class="field-name">Event End Time</div>
-      <div class="field-type" style="color:#d97706;font-weight:600;">⚠️ Single line text</div>
-      <div class="field-note"><span class="tag tag-amber">Updated!</span> Also plain text. Set to "Single line text". e.g. "9:00 PM"</div>
-    </div>
-    <div class="field-row"><div class="field-name">Description</div><div class="field-type">Long text</div><div class="field-note">AI-written description from the post and flyer</div></div>
-    <div class="field-row"><div class="field-name">Venue</div><div class="field-type">Link to Venues table</div><div class="field-note">Connected to Table 3 below</div></div>
-    <div class="field-row"><div class="field-name">Organizer</div><div class="field-type">Link to Organizers table</div><div class="field-note">Connected to Table 4 below</div></div>
-    <div class="field-row"><div class="field-name">Event Website</div><div class="field-type">URL</div><div class="field-note">Link to event page if found</div></div>
-    <div class="field-row"><div class="field-name">Image URL</div><div class="field-type">URL</div><div class="field-note">Instagram image link</div></div>
-    <div class="field-row"><div class="field-name">Status</div><div class="field-type">Single select</div><div class="field-note">Options: Draft, Needs Image, Upload to WordPress, Published</div></div>
-    <div class="field-row"><div class="field-name">Source URL</div><div class="field-type">URL</div><div class="field-note">Original Instagram post URL</div></div>
-  </div>
-
-  <!-- Venues & Organizers -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-    <div class="card card-sm">
-      <div style="font-weight:700;font-size:16px;color:var(--navy);margin-bottom:12px;">📍 Table 3: Venues</div>
-      <div style="font-size:14px;">
-        <div style="padding:6px 0;border-bottom:1px solid var(--border);"><strong>Venue Name</strong> — Single line text</div>
-        <div style="padding:6px 0;border-bottom:1px solid var(--border);"><strong>Address</strong> — Long text</div>
-        <div style="padding:6px 0;border-bottom:1px solid var(--border);"><strong>Website</strong> — URL</div>
-        <div style="padding:6px 0;border-bottom:1px solid var(--border);"><strong>Instagram</strong> — URL</div>
-        <div style="padding:6px 0;"><strong>City</strong> — Single line text</div>
-      </div>
-    </div>
-    <div class="card card-sm">
-      <div style="font-weight:700;font-size:16px;color:var(--navy);margin-bottom:12px;">🧑 Table 4: Organizers</div>
-      <div style="font-size:14px;">
-        <div style="padding:6px 0;border-bottom:1px solid var(--border);"><strong>Organizer Name</strong> — Single line text</div>
-        <div style="padding:6px 0;border-bottom:1px solid var(--border);"><strong>Website</strong> — URL</div>
-        <div style="padding:6px 0;border-bottom:1px solid var(--border);"><strong>Instagram</strong> — URL</div>
-        <div style="padding:6px 0;border-bottom:1px solid var(--border);"><strong>Email</strong> — Email</div>
-        <div style="padding:6px 0;"><strong>Phone</strong> — Phone number</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<hr class="big-divider">
-
-<!-- CREDENTIALS -->
+<!-- STEP 1: AIRTABLE API KEY ONLY -->
 <div class="step-section" id="credentials">
-  <span class="section-label">Step 2</span>
-  <div class="section-title">Get your API keys and connect everything</div>
-  <p class="section-desc">An API key is like a password that lets n8n talk to other apps. You need 4 of them. Get each one from the links below and keep them somewhere safe (like a notes app) while you set up.</p>
+  <span class="section-label">Step 1</span>
+  <div class="section-title">Get your Airtable API key (and the other 3 keys)</div>
+  <p class="section-desc">Your Airtable tables are already built. The only thing left to do here is connect each service to n8n using an API key — think of an API key as a password that lets one app talk to another.</p>
 
+  <!-- AIRTABLE — detailed -->
   <div class="card">
-    <div class="cred-row" style="font-weight:700;color:var(--slate);font-size:12px;text-transform:uppercase;letter-spacing:1px;">
-      <div>Service</div><div>Where to get your key</div><div>Type</div>
-    </div>
-    <div class="cred-row">
+    <div class="cred-row" style="border-bottom:2px solid var(--paw);">
       <div class="cred-label">🔧 Airtable</div>
-      <div><a class="cred-link" href="https://airtable.com/create/tokens" target="_blank">airtable.com/create/tokens</a><br>Create a personal access token. Under Scopes, select: <strong>data.records:read</strong>, <strong>data.records:write</strong>, and <strong>schema.bases:read</strong>. Under Access, select your Jet Set Pets base.</div>
-      <div class="cred-badge">OAuth Token</div>
+      <div>
+        <ol style="padding-left:18px;line-height:2;font-size:14px;color:var(--text);">
+          <li>Go to <a class="cred-link" href="https://airtable.com/create/tokens" target="_blank">airtable.com/create/tokens</a></li>
+          <li>Click <strong>"Create new token"</strong></li>
+          <li>Give it any name, e.g. <code>n8n - Jet Set Pets</code></li>
+          <li>Under <strong>Scopes</strong>, add: <code>data.records:read</code>, <code>data.records:write</code>, and <code>schema.bases:read</code></li>
+          <li>Under <strong>Access</strong>, select your Jet Set Pets Events base</li>
+          <li>Click <strong>Create token</strong> and copy it immediately — Airtable only shows it once</li>
+          <li>In n8n, click any Airtable node → credential dropdown → "Create new credential" → paste the token → Save</li>
+        </ol>
+      </div>
     </div>
+
+    <!-- GEMINI -->
     <div class="cred-row">
       <div class="cred-label">🤖 Google Gemini</div>
-      <div><a class="cred-link" href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a><br>Click "Get API Key" → Create new key → Copy it. This gives the robot access to Gemini 2.5 Flash (the AI that reads event flyers).</div>
-      <div class="cred-badge">API Key</div>
+      <div>
+        <ol style="padding-left:18px;line-height:2;font-size:14px;color:var(--text);">
+          <li>Go to <a class="cred-link" href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a></li>
+          <li>Click <strong>"Get API Key"</strong> → <strong>"Create API key"</strong></li>
+          <li>Copy the key</li>
+          <li>In n8n, click the Google Gemini Chat Model node → credential dropdown → paste the key → Save</li>
+        </ol>
+      </div>
     </div>
+
+    <!-- APIFY -->
     <div class="cred-row">
       <div class="cred-label">🕷️ Apify</div>
       <div>
-        <a class="cred-link" href="https://console.apify.com/account/integrations" target="_blank">console.apify.com → Settings → Integrations</a><br>
-        Copy your API token from that page.
-        <div class="important-box" style="margin-top:12px;">
-          <h4>⚠️ IMPORTANT: Set up the Actor before connecting to n8n</h4>
-          <p>You must do this step BEFORE setting up credentials in n8n, or the workflow will fail.</p>
+        <div class="important-box" style="margin:0 0 14px 0;">
+          <h4>⚠️ Do this BEFORE copying your API token</h4>
           <ol>
-            <li>Go to <a href="https://apify.com/apify/instagram-post-scraper" target="_blank" style="color:#9a3412;font-weight:600;">apify.com → search "Instagram Post Scraper"</a> and click <strong>"Save to My Actors"</strong></li>
-            <li>Open the saved actor, then click the <strong>Input</strong> tab to open its settings</li>
-            <li>You will see a default Instagram URL already in the input field — <strong>delete it</strong> (the field cannot be blank, so replace it with any valid placeholder, like <code>https://www.instagram.com/instagram</code>)</li>
-            <li>Click <strong>"Save"</strong> only — <span style="color:#dc2626;font-weight:700;">do NOT click "Save &amp; Run"</span> — clicking Save &amp; Run will use your Apify credits unnecessarily</li>
+            <li>Go to <a href="https://apify.com/apify/instagram-post-scraper" target="_blank" style="color:#9a3412;font-weight:600;">apify.com → search "Instagram Post Scraper"</a> → click <strong>"Save to My Actors"</strong></li>
+            <li>Open the saved actor → click the <strong>Input</strong> tab</li>
+            <li>You'll see a default Instagram URL already filled in — <strong>delete it</strong> (the field can't be left empty, so type any placeholder, e.g. <code>https://www.instagram.com/instagram</code>)</li>
+            <li>Click <strong>"Save"</strong> only — <span style="color:#dc2626;font-weight:700;">do NOT click "Save &amp; Run"</span>, this uses your credits for nothing</li>
           </ol>
-          <p style="margin-top:8px;">After clicking Save, come back and copy your API token from the Integrations page.</p>
         </div>
+        <ol style="padding-left:18px;line-height:2;font-size:14px;color:var(--text);">
+          <li>Go to <a class="cred-link" href="https://console.apify.com/account/integrations" target="_blank">console.apify.com → Settings → Integrations</a></li>
+          <li>Copy your API token</li>
+          <li>In n8n, click the "Apify - Scrape Instagram" node → credential dropdown (Header Auth) → paste as <code>Bearer YOUR_TOKEN</code> → Save</li>
+        </ol>
       </div>
-      <div class="cred-badge">Header Auth</div>
     </div>
+
+    <!-- WORDPRESS -->
     <div class="cred-row">
       <div class="cred-label">🌐 WordPress</div>
-      <div>Go to your WordPress admin → Users → Profile → Scroll down to <strong>Application Passwords</strong> → Type a name like "n8n" → Click Add → Copy the password shown (you can only see it once!)</div>
-      <div class="cred-badge">Username + App Password</div>
+      <div>
+        <ol style="padding-left:18px;line-height:2;font-size:14px;color:var(--text);">
+          <li>Log in to your WordPress admin dashboard</li>
+          <li>Go to <strong>Users → Profile</strong> → scroll to <strong>Application Passwords</strong></li>
+          <li>Type a name like <code>n8n</code> → click <strong>Add New Application Password</strong></li>
+          <li>Copy the password shown (you can only see it once!)</li>
+          <li>In n8n, click any WordPress node → credential dropdown → enter your WordPress username + the application password → Save</li>
+        </ol>
+      </div>
     </div>
   </div>
 
-  <!-- AI CHOICE SECTION -->
-  <div class="alert alert-purple" style="margin-top:20px;">
-    <div class="alert-icon">🤖</div>
-    <div><strong>Gemini or OpenAI? You choose.</strong> This workflow uses Gemini 2.5 Flash by default, but you can swap it for OpenAI GPT-4o if you prefer. Both can read event flyer images. See the comparison below.</div>
-  </div>
-  <div class="ai-choice">
-    <div class="ai-card gemini">
-      <div class="ai-card-title">✅ Gemini 2.5 Flash (Default)</div>
-      <ul>
-        <li>Very fast — processes images quickly</li>
-        <li>Free tier available at Google AI Studio</li>
-        <li>Excellent at reading text inside images (OCR)</li>
-        <li>Great for event flyer detection</li>
-      </ul>
-      <div style="margin-top:10px;font-size:12px;font-weight:600;color:#15803d;">Get key: aistudio.google.com/apikey</div>
-    </div>
-    <div class="ai-card openai">
-      <div class="ai-card-title">🔄 OpenAI GPT-4o (Alternative)</div>
-      <ul>
-        <li>Also excellent at reading images</li>
-        <li>Very strong text understanding</li>
-        <li>Paid — costs per API call</li>
-        <li>Easy to swap in n8n: just change the AI model in the AI Agent node</li>
-      </ul>
-      <div style="margin-top:10px;font-size:12px;font-weight:600;color:#6d28d9;">Get key: platform.openai.com/api-keys</div>
-    </div>
-  </div>
-
-  <div class="alert alert-info" style="margin-top:8px;">
+  <div class="alert alert-info" style="margin-top:16px;">
     <div class="alert-icon">🔧</div>
-    <div><strong>How to add a credential in n8n:</strong> Click any node in your workflow → Find the credential dropdown → Click "Create new credential" → Paste your API key → Save. You only do this once per service — every node that uses the same service shares the same credential automatically.</div>
+    <div><strong>One credential, many nodes.</strong> You only need to create each credential once per service. Every node that uses that service (e.g. all the Airtable nodes) will automatically share the same saved credential — you just select it from the dropdown.</div>
   </div>
 </div>
 
@@ -444,217 +262,210 @@ footer a{color:#fb923c;}
 
 <!-- NODES -->
 <div class="step-section" id="nodes">
-  <span class="section-label">Step 3</span>
+  <span class="section-label">Step 2</span>
   <div class="section-title">Every node in the workflow — explained simply</div>
-  <p class="section-desc">A "node" is like one step in the assembly line. Click any node below to read what it does in plain English. They run in order, like a relay race — each one passes the baton to the next.</p>
+  <p class="section-desc">A "node" is one step in the assembly line. Click any node to read what it does in plain English. They run in order, like a relay race — each one hands off to the next.</p>
 
   <div class="alert alert-success">
     <div class="alert-icon">✅</div>
-    <div><strong>Good news — no need to run nodes one by one!</strong> This workflow has already been built and tested. Once you have added all your API keys (Step 2), you just click the big <strong>"Execute Workflow"</strong> button and the entire system runs automatically from start to finish. The node-by-node testing is only needed during your initial setup to check credentials — after that, just run the whole workflow at once.</div>
+    <div><strong>No need to run nodes one by one after testing.</strong> This workflow has already been tested. Once your 4 credentials are connected, just click <strong>"Execute Workflow"</strong> and the whole thing runs start to finish automatically. Node-by-node testing is only useful the first time, to confirm each credential works.</div>
   </div>
 
-  <!-- Node 1 -->
+  <!-- Node: Schedule Trigger -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-trigger">1</div>
-      <div class="node-name">Schedule Trigger</div>
+      <div class="node-name">Schedule Trigger (Mon/Wed/Fri 9AM)</div>
       <div class="node-type-badge badge-trigger">Trigger</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>Think of this as an <strong>alarm clock for your robot.</strong> This is the very first node — it is what starts the entire workflow. It wakes up the automation every Monday, Wednesday, and Friday at exactly 9:00 AM. You don't have to press anything — once you turn the workflow on, it runs on this schedule forever, automatically.</p>
-      <div class="think-box">💭 <strong>Why 3 days a week?</strong> Dog-friendly events are usually announced a few days in advance. Checking 3 times a week means you catch new posts quickly without spending too many Apify credits. You can change this schedule anytime by clicking this node and adjusting the time settings.</div>
+      <p>This is the <strong>alarm clock</strong> that starts the entire workflow. It wakes everything up every Monday, Wednesday, and Friday at exactly 9:00 AM. It produces no data of its own — it just tells the workflow "go!"</p>
+      <div class="think-box">💭 You can change the days or time anytime by opening this node and adjusting the schedule settings.</div>
     </div>
   </div>
 
-  <!-- Node 2 -->
+  <!-- Node: Airtable Get Active Resources -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-db">2</div>
-      <div class="node-name">Airtable – Get Active Resources</div>
+      <div class="node-name">Airtable - Get Active Resources</div>
       <div class="node-type-badge badge-db">Database</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>This node opens your <strong>"Event Resources"</strong> table in Airtable and fetches only the Instagram accounts that are ready to be checked. It looks for two conditions at the same time:</p>
-      <ul style="margin:10px 0 10px 20px;font-size:15px;">
-        <li style="margin-bottom:6px;"><strong>"Is Active" is ticked ✓</strong> — this account is active and should be checked</li>
-        <li><strong>"Info Quality" is set to "Great"</strong> — this account regularly posts reliable event info</li>
-      </ul>
-      <p>If an account is marked <strong>"Good"</strong> or <strong>"Check monthly"</strong>, it gets skipped during this automatic run. You can still check those manually whenever you want.</p>
-      <div class="think-box">💭 <strong>The "Great" + "Is Active" filter logic:</strong> Both conditions must be true for an account to be included. This is how you control which accounts the robot checks — just tick or untick "Is Active", or change the Info Quality rating, to include or exclude any account.</div>
+      <p>This node opens your <strong>Event Resources</strong> table and fetches every Instagram account that still needs to be checked this week. It filters using one condition: <strong>"Checked This Week" = uncheck</strong>.</p>
+      <p>It returns the Resource ID, Instagram URL, and Name for each matching account.</p>
+      <div class="think-box">💭 Only accounts marked "uncheck" come through. Once an account is processed later in the workflow, it gets flipped to "checked" so it isn't picked up again until the next cycle resets it.</div>
     </div>
   </div>
 
-  <!-- Node 3 -->
+  <!-- Node: Split In Batches -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-loop">3</div>
-      <div class="node-name">Split In Batches (First one — Account Batching)</div>
+      <div class="node-name">Split In Batches</div>
       <div class="node-type-badge badge-loop">Loop</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>Imagine you have 50 Instagram accounts to check. If you tried to send all 50 to Apify at the exact same time, it would get overwhelmed and crash. This node <strong>organizes your accounts into a line</strong> so they are processed one at a time, in an orderly queue — like a queue at a coffee shop. One account gets processed completely before the next one starts.</p>
-      <div class="think-box">💭 Think of it as the workflow's organizer — it makes sure everything runs smoothly without overloading any service.</div>
+      <p>If you have 30 Instagram accounts to check, sending all 30 to Apify at once would overwhelm it. This node <strong>processes accounts one at a time</strong> — Account 1, then Account 2, then Account 3 — instead of all at once.</p>
+      <div class="think-box">💭 Each account goes all the way through the whole workflow before the next one starts.</div>
     </div>
   </div>
 
-  <!-- Node 4 -->
+  <!-- Node: Apify Scrape Instagram -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-scrape">4</div>
-      <div class="node-name">Apify – Scrape Instagram</div>
+      <div class="node-name">Apify - Scrape Instagram</div>
       <div class="node-type-badge badge-scrape">Scraper</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>This is your <strong>Instagram reading robot.</strong> It takes each Instagram account URL from your list and visits that account to collect the most recent posts. For each post, it grabs three things: the caption text, the image URL (the link to the actual photo), and the date it was posted.</p>
-      <div class="think-box">💭 <strong>Why Apify instead of going to Instagram directly?</strong> Instagram has rules that block automated tools from reading posts. Apify has special technology that makes it look like a real person browsing Instagram, so it works reliably without getting blocked.</div>
-      <div class="warn-box">⚠️ <strong>Remember:</strong> You must have already set up the Instagram Post Scraper actor in Apify (with a placeholder URL saved) before this node will work. See Step 2 above for that setup.</div>
+      <p>This node visits the Instagram account and pulls the <strong>5 latest posts</strong>. For each post it collects: caption, image URLs, carousel images (if it's a multi-photo post), timestamp, location tag, the account owner's username, whether the owner is verified, and any tagged users.</p>
+      <div class="think-box">💭 Apify uses residential proxies so it looks like a real person browsing Instagram, which is why it can reliably read posts without getting blocked.</div>
     </div>
   </div>
 
-  <!-- Node 5 -->
+  <!-- Node: Verified_event -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-code">5</div>
-      <div class="node-name">Verified_event (Code Filter)</div>
+      <div class="node-name">Verified_event</div>
       <div class="node-type-badge badge-code">Code Filter</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>After Apify grabs the posts, this is a small <strong>quality check.</strong> It is a code node — meaning it runs a short, automatic script. It filters the posts to check whether the account or any tagged user has a verified Instagram badge (the blue checkmark ✓). This helps ensure you're only looking at reliable, legitimate accounts and not spam.</p>
-      <div class="think-box">💭 If zero verified posts are found, this node creates a flag called <code>_no_verified_posts: true</code> which tells the next node to skip this account entirely and move on to the next one. This saves time and money.</div>
+      <p>A quality filter. It checks each post for one of two things: <strong>the account owner is verified</strong> (Instagram's blue checkmark), OR <strong>a tagged user in the post is verified.</strong> Only posts that pass one of these checks move forward.</p>
+      <div class="think-box">💭 If zero posts pass, this node outputs a flag (<code>_no_verified_posts: true</code>) which the next gate uses to skip this account entirely and save resources.</div>
     </div>
   </div>
 
-  <!-- Node 6 -->
+  <!-- Node: Split Posts In Batches -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
-      <div class="node-num color-gate">6</div>
-      <div class="node-name">If Has Verified Posts</div>
-      <div class="node-type-badge badge-gate">Gate / Filter</div>
-      <div class="expand-icon">▼</div>
-    </div>
-    <div class="node-body">
-      <p>Think of this as a <strong>doorman at a club.</strong> It checks the flag from the previous node. If there are no verified posts, the doorman says "Not tonight" and the workflow skips this account completely and moves on to the next. If there ARE verified posts, everyone gets through and the workflow continues.</p>
-      <div class="think-box">💭 This is a smart way to save resources. Why spend AI credits analyzing posts from an account that has nothing useful? Gates like this make the workflow efficient.</div>
-    </div>
-  </div>
-
-  <!-- Node 7 -->
-  <div class="node-card">
-    <div class="node-header" onclick="toggleNode(this)">
-      <div class="node-num color-loop">7</div>
-      <div class="node-name">Split Posts In Batches (Second one — Post Batching)</div>
+      <div class="node-num color-loop">6</div>
+      <div class="node-name">Split Posts In Batches</div>
       <div class="node-type-badge badge-loop">Loop</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>This node does the same job as Node 3, but now for <strong>individual posts</strong> instead of accounts. Once Apify returns several posts from one account, this node lines them up and processes them <strong>one post at a time.</strong> This makes the AI much more accurate because it focuses on one single post at a time instead of getting confused by multiple posts at once.</p>
-      <div class="think-box">💭 After each post is fully processed all the way to the end (saved to Airtable and sent to WordPress), the workflow loops back here to pick up the next post in the queue.</div>
+      <p>Same idea as Node 3, but now for individual posts. If an account has 5 verified posts, this node processes <strong>Post 1, then Post 2, then Post 3</strong> — one at a time — instead of mixing them together.</p>
+      <p>This node has two paths: the <strong>main branch</strong> continues to "Download Flyer Image" to process the post, while the <strong>finish branch</strong> goes to "Update Resource Last Checked" once every post for this account is done.</p>
+      <div class="think-box">💭 Processing one post at a time keeps the AI accurate — it never gets confused by mixing details from two different events.</div>
     </div>
   </div>
 
-  <!-- Node 8 -->
+  <!-- Node: Download Flyer Image -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
-      <div class="node-num color-image">8</div>
+      <div class="node-num color-image">7</div>
       <div class="node-name">Download Flyer Image</div>
       <div class="node-type-badge badge-image">Image</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>Apify only gives you a <strong>web link</strong> to the Instagram image — like a web address pointing to the photo. But the AI can't read a web address — it needs the actual image file. This node <strong>downloads the real image file</strong> from that link so it can be resized, renamed, and analyzed by the AI in the next steps.</p>
-      <div class="think-box">💭 If the download fails — for example, Instagram sometimes makes post links expire — the workflow won't crash. It has a safety setting that lets it continue on to the next post automatically.</div>
+      <p>Apify only gives a web link to the image. This node <strong>actually downloads the image file</strong> from Instagram so it can be resized, renamed, and analyzed in later steps. Without this, the AI has nothing to look at.</p>
+      <div class="think-box">💭 If the download fails (Instagram links sometimes expire), the workflow won't crash — it's set to continue regardless and move on.</div>
     </div>
   </div>
 
-  <!-- Node 9 -->
+  <!-- Node: If Image Downloaded -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
-      <div class="node-num color-gate">9</div>
+      <div class="node-num color-gate">8</div>
       <div class="node-name">If Image Downloaded</div>
-      <div class="node-type-badge badge-gate">Gate / Filter</div>
+      <div class="node-type-badge badge-gate">Gate</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>Another safety check — like a guardrail. This node asks: <strong>did the image actually download successfully?</strong> If yes, the workflow moves forward. If no (the download failed or the file is empty), the workflow skips this post and moves on to the next one. This prevents crashes caused by bad or expired image links.</p>
+      <p>A safety check. It looks at whether a binary file actually exists. If yes, the post continues into image processing. If no (the download failed or returned nothing), this post is skipped and the workflow moves to the next one.</p>
     </div>
   </div>
 
-  <!-- Node 10 -->
+  <!-- Node: Resize Image -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
-      <div class="node-num color-image">10</div>
-      <div class="node-name">Resize Image (650px)</div>
+      <div class="node-num color-image">9</div>
+      <div class="node-name">Resize Image (650px shortest side)</div>
       <div class="node-type-badge badge-image">Image</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>Instagram images can be very large files. This node <strong>resizes the image to 650 pixels wide</strong> — a standard size that is large enough to look good on your website but small enough to not slow down your page load. It also ensures the image isn't too large for the AI to process quickly.</p>
-      <div class="think-box">💭 Smaller images = faster website = better Google ranking. This is a small but important step.</div>
+      <p>Shrinks the image so its shortest side is 650 pixels. This makes the AI step faster, uses fewer AI tokens (which costs less), and prevents memory issues from huge image files.</p>
     </div>
   </div>
 
-  <!-- Node 11 -->
+  <!-- Node: Rename Image for SEO -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
-      <div class="node-num color-code">11</div>
+      <div class="node-num color-code">10</div>
       <div class="node-name">Rename Image for SEO</div>
       <div class="node-type-badge badge-code">Code</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>By default, images from Instagram have random file names like <code>IMG_38471.jpg</code>. This code node <strong>gives each image a smart, descriptive name</strong> based on the venue, month, and year — for example: <code>dog-friendly-event-boris-horton-june-2025.jpg</code>. This helps your website rank higher on Google because Google reads image file names as part of its search ranking.</p>
-      <div class="think-box">💭 This is called SEO (Search Engine Optimization). Simple changes like this help Jet Set Pets show up when people search for "dog-friendly events NYC" on Google.</div>
+      <p>Instagram images come with random file names. This code node renames the image to something descriptive and search-friendly, e.g. <code>dog-friendly-event-boris-horton-july-12-2026-x7ab.jpg</code>. The unique random code at the end guarantees the filename is never duplicated.</p>
+      <div class="think-box">💭 Google reads image file names as part of its ranking. A descriptive name helps Jet Set Pets show up in searches like "dog-friendly events NYC."</div>
     </div>
   </div>
 
-  <!-- Node 12 -->
+  <!-- Node: Prepare Image for Gemini Vision -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
-      <div class="node-num color-ai">12</div>
+      <div class="node-num color-ai">11</div>
       <div class="node-name">Prepare Image for Gemini Vision</div>
       <div class="node-type-badge badge-ai">AI Prep</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>The AI needs two pieces of information to work: the actual image file AND the Instagram caption text. This node <strong>packages both together into one bundle</strong> so they can be sent to the AI at the same time. Think of it like putting a letter and a photo into the same envelope before mailing it.</p>
+      <p>Packages everything the AI will need into one bundle: the main flyer URL, any carousel (multi-photo) image URLs, how many carousel slides there are, the file name, and the file type. Think of it as putting the photo and a note together into one envelope before sending it to the AI.</p>
     </div>
   </div>
 
-  <!-- Node 13 — AI Agent DEEP EXPLANATION -->
+  <!-- Node: Wait -->
+  <div class="node-card">
+    <div class="node-header" onclick="toggleNode(this)">
+      <div class="node-num color-wait">12</div>
+      <div class="node-name">Wait</div>
+      <div class="node-type-badge badge-wait">Pause</div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="node-body">
+      <p>Pauses the workflow for <strong>30 seconds</strong> before calling the AI. This exists purely to prevent a "429 Too Many Requests" error from Gemini — if posts are sent too quickly back to back, Gemini's servers will reject the requests. This short pause keeps everything running smoothly.</p>
+      <div class="think-box">💭 Without this pause, a busy run with many posts could hit Gemini's rate limit and start failing partway through.</div>
+    </div>
+  </div>
+
+  <!-- Node: AI Agent - DEEP DIVE -->
   <div class="node-card" style="border:2px solid #a855f7;">
     <div class="node-header" onclick="toggleNode(this)" style="background:#faf5ff;">
       <div class="node-num color-ai">13</div>
-      <div class="node-name">🧠 AI Agent – Extract Event Details (Gemini 2.5 Flash or OpenAI)</div>
+      <div class="node-name">🧠 AI Agent - Extract Event Details</div>
       <div class="node-type-badge badge-ai">AI Agent ★ CORE</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>This is the <strong>brain of the entire workflow.</strong> This is where the magic happens. The AI Agent receives the image and the caption text and does something remarkable: it <strong>reads the event flyer like a human would.</strong></p>
+      <p>This is the <strong>brain of the entire workflow</strong>, powered by the connected Google Gemini Chat Model (Gemini 2.5 Flash). It receives the flyer image, any carousel slides, the Instagram caption, and the location tag — and reads all of it like a human would.</p>
 
-      <p style="margin-top:12px;">Here is exactly what the AI does:</p>
+      <p style="margin-top:12px;">Here's what it does and the rules it follows:</p>
       <ul style="margin:10px 0 10px 20px;font-size:15px;">
-        <li style="margin-bottom:8px;"><strong>Looks at the image:</strong> Gemini 2.5 Flash is a "vision AI" — meaning it can see and understand images, not just text. It reads all text printed on the flyer (dates, times, venue names, event names) just like your eyes would.</li>
-        <li style="margin-bottom:8px;"><strong>Reads the caption:</strong> It also reads the Instagram caption text to find any extra details not visible in the image.</li>
-        <li style="margin-bottom:8px;"><strong>Decides if it's an event:</strong> It asks itself: "Is this actually an upcoming event, or just a regular photo or ad?" Only if it is an event does it continue.</li>
-        <li style="margin-bottom:8px;"><strong>Gives a confidence score:</strong> It scores how confident it is (0 to 1). A score above 0.6 means it's likely an event.</li>
-        <li><strong>Extracts the data:</strong> It pulls out and returns: event name, event date, start time, end time, venue name, organizer name, event website URL, and description.</li>
+        <li style="margin-bottom:8px;"><strong>Reads the flyer visually first:</strong> It transcribes every word of text printed on the image into a field called <code>image_text_extracted</code>. If there's genuinely no text on the image, it outputs exactly "NO TEXT DETECTED".</li>
+        <li style="margin-bottom:8px;"><strong>Flyer beats caption when they disagree:</strong> If the image shows a different date/time/venue than the caption text, it trusts the flyer graphic as the authoritative source.</li>
+        <li style="margin-bottom:8px;"><strong>Decides if it's a real event:</strong> Sets <code>is_event</code> to true only if it's announcing a specific future event — not a recap or generic photo.</li>
+        <li style="margin-bottom:8px;"><strong>Calculates relative dates:</strong> If a post says "this Saturday," it works out the exact date using the post's timestamp as the reference point.</li>
+        <li style="margin-bottom:8px;"><strong>Picks the city from an approved list only:</strong> It must match one of the pre-approved city names exactly (Brooklyn, New York, Jersey City, Tampa Bay, etc.) — it can never invent a new city name.</li>
+        <li style="margin-bottom:8px;"><strong>Flags human-only events:</strong> If dogs aren't allowed at the event (e.g. a charity gala), it sets <code>is_human_only</code> to true and adds a clear warning note to the description.</li>
+        <li style="margin-bottom:8px;"><strong>Confidence is tied to visual proof:</strong> If no text was found on the image, the confidence score is capped at 70 because the AI is relying only on the caption. A score of 80–100 is only allowed when the core details are physically visible on the flyer.</li>
+        <li><strong>Extracts contact info and notes:</strong> Scans for a website, phone number, and any special instructions like "bring a mat" or "RSVP required."</li>
       </ul>
 
-      <div class="alert alert-purple" style="margin-top:12px;">
-        <div class="alert-icon">🤖</div>
-        <div><strong>Gemini vs OpenAI — how to swap:</strong> By default this workflow uses Gemini 2.5 Flash. If you want to use OpenAI GPT-4o instead, click this node → find the "Model" or "Chat Model" setting → change it to OpenAI → select GPT-4o. The rest of the node stays the same. Both AI models can read images and understand event details equally well.</div>
-      </div>
-
-      <div class="think-box">💭 <strong>How does an AI "see" an image?</strong> AI models like Gemini and GPT-4o are trained on millions of images with labels describing what's in them. Over time, the AI learned to recognize patterns — letters, numbers, logos, layouts. When it sees a flyer image, it can recognize the text inside it (like "7 PM" or "Trivia Night") and understand what those words mean in context. This technology is called OCR + Vision AI.</div>
+      <div class="think-box">💭 <strong>How does an AI "see" an image?</strong> Gemini is "multimodal" — it can process images and text at the same time. It reads the pixels in the flyer the same way your eyes would, recognizing printed letters and numbers (this is called OCR), and then understands what those words mean in context — for example, connecting "7 PM Saturday" with a photo of a dog cafe to conclude "this is a dog-friendly evening event."</div>
     </div>
   </div>
 
-  <!-- Node 14 -->
+  <!-- Node: Parse AI Output -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-code">14</div>
@@ -663,42 +474,37 @@ footer a{color:#fb923c;}
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>The AI sends back its answer as a big block of text. This code node <strong>cleans up that response</strong> and converts it into a tidy, organized format (called JSON) that the rest of the workflow can read and use. Think of it like taking a messy handwritten note and typing it up neatly into a form.</p>
+      <p>Gemini replies with a block of text. This node <strong>converts that text into clean, structured data</strong> the rest of the workflow can use. It also attaches the original Instagram URL and the resource ID so we always know exactly where each event came from.</p>
     </div>
   </div>
 
-  <!-- Node 15 -->
+  <!-- Node: If Is Event -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-gate">15</div>
-      <div class="node-name">If Is Event (Confidence Filter)</div>
-      <div class="node-type-badge badge-gate">Gate / Filter</div>
+      <div class="node-name">If Is Event</div>
+      <div class="node-type-badge badge-gate">Gate</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>Not every Instagram post is an event — some are just photos, promotions, or reshares. This gate checks two things from the AI's output:</p>
-      <ul style="margin:10px 0 10px 20px;font-size:15px;">
-        <li style="margin-bottom:6px;"><strong>is_event = true</strong> — the AI confirmed this is actually an event</li>
-        <li><strong>confidence score ≥ 0.6</strong> — the AI is at least 60% sure</li>
-      </ul>
-      <p>If both conditions are met, the workflow continues. If not, this post is discarded — saving you from getting junk data in your Airtable.</p>
+      <p>Checks two things from the AI's answer: <strong><code>is_event</code> = true</strong> AND <strong>confidence is 60 or higher</strong>. Both must be true to continue. If either fails, the post is dropped — keeping low-quality or non-event posts out of your database.</p>
     </div>
   </div>
 
-  <!-- Node 16 -->
+  <!-- Node: Airtable Check Duplicate Event -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-db">16</div>
-      <div class="node-name">Airtable – Check Duplicate Event</div>
+      <div class="node-name">Airtable - Check Duplicate Event</div>
       <div class="node-type-badge badge-db">Database</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>Before saving a new event, the workflow checks if you already have it. This node <strong>searches your "Events and Experiences" table</strong> to see if an event with the same name and date already exists. This is exactly what you do manually when you go to the Events tab in Airtable and scroll to check — except the robot does it in milliseconds.</p>
+      <p>Searches your Events table for a record with the <strong>same Event Name AND the same Start Date.</strong> If a match exists, this event is already in your system.</p>
     </div>
   </div>
 
-  <!-- Node 17 -->
+  <!-- Node: Evaluate Duplicate -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-code">17</div>
@@ -707,38 +513,37 @@ footer a{color:#fb923c;}
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>After searching Airtable, this code node makes the final yes/no decision: <strong>is this a duplicate or not?</strong> It looks at what the Airtable search returned. If nothing was found → it marks this event as "Not Duplicate" and allows it to continue. If something was found → it marks it as "Duplicate" so the next node can stop it.</p>
+      <p>Looks at the search result and creates a flag: <code>_is_duplicate</code>. If nothing was found → false (it's new). If a record was found → true (it already exists).</p>
     </div>
   </div>
 
-  <!-- Node 18 -->
+  <!-- Node: If (duplicate gate) -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-gate">18</div>
-      <div class="node-name">If (Duplicate Check Gate)</div>
-      <div class="node-type-badge badge-gate">Gate / Filter</div>
+      <div class="node-name">If (Duplicate Gate)</div>
+      <div class="node-type-badge badge-gate">Gate</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>This is the final check before creating anything in Airtable. It reads the result from Node 17. <strong>If "Not Duplicate" → proceed</strong> to create the venue, organizer, and event. <strong>If "Duplicate" → stop</strong> and move on to the next post. This is how the robot makes sure you never get the same event in Airtable twice.</p>
+      <p>Reads the <code>_is_duplicate</code> flag. <strong>False (not a duplicate) → continues</strong> to venue creation. <strong>True (duplicate) → skips</strong> straight back to Split Posts In Batches to process the next post.</p>
     </div>
   </div>
 
-  <!-- Node 19 (Search Venue) -->
+  <!-- Node: Airtable Search Venue -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-db">19</div>
-      <div class="node-name">Airtable – Search Venue</div>
+      <div class="node-name">Airtable - Search Venue</div>
       <div class="node-type-badge badge-db">Database</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>The AI extracted a venue name from the event (for example, "Boris &amp; Horton"). Before creating the event, the workflow needs to link it to a venue record. This node <strong>searches your Venues table</strong> to see if that venue already exists. This is the automated version of you manually checking your venues list.</p>
-      <div class="think-box">💭 This is exactly how you do it manually — check if the venue is already in your list before adding a new event. The robot does it automatically.</div>
+      <p>Searches your Venues table for a record matching the <code>venue_name</code> the AI found. This is the automated version of checking your venue list before adding a new event.</p>
     </div>
   </div>
 
-  <!-- Node 20 -->
+  <!-- Node: Evaluate Venue Found -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-code">20</div>
@@ -747,24 +552,24 @@ footer a{color:#fb923c;}
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>After searching for the venue, this code decides: <strong>was the venue found or not?</strong> If found → use the existing venue record. If not found → the next node will create a brand new venue. This result is passed along so the right action is taken.</p>
+      <p>Creates a flag (<code>_venue_found</code>) telling the next node whether the venue already exists or needs to be created.</p>
     </div>
   </div>
 
-  <!-- Node 21 -->
+  <!-- Node: Airtable Create Venue -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-db">21</div>
-      <div class="node-name">Airtable – Create Venue (if new)</div>
+      <div class="node-name">Airtable - Create Venue</div>
       <div class="node-type-badge badge-db">Database</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>If the venue did not exist in your Venues table, this node <strong>automatically creates a new venue record</strong> using the information the AI found. So if the AI found "Mutts &amp; Martinis Tampa" and it's not in your list yet, it gets added automatically — just like you would add it manually before creating the event.</p>
+      <p>If the venue doesn't exist yet, this node creates it automatically — storing the Venue Name, State, Zip Code, Phone, Website, and Notes pulled from the AI's output.</p>
     </div>
   </div>
 
-  <!-- Node 22 -->
+  <!-- Node: Resolve Venue ID -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-code">22</div>
@@ -773,25 +578,24 @@ footer a{color:#fb923c;}
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>Every record in Airtable has a unique ID code — something like <code>recABC123xyz</code>. When we link an event to a venue, we need that exact ID. This node <strong>grabs the correct venue ID</strong> — whether it came from an existing venue or a newly created one — so the event can be properly linked to it. Without this, the event and the venue would be unconnected in Airtable.</p>
+      <p>Every Airtable record has a unique ID. This node grabs the correct venue's ID — whether it's an existing record or one just created — and stores it as <code>_resolved_venue_id</code> so the event can be linked to the right venue.</p>
     </div>
   </div>
 
-  <!-- Nodes 23-25 -->
+  <!-- Node: Organizer trio -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-db">23–25</div>
-      <div class="node-name">Airtable – Search / Create Organizer + Resolve Organizer ID</div>
+      <div class="node-name">Airtable - Search/Create Organizer + Resolve Organizer ID</div>
       <div class="node-type-badge badge-db">Database</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>These three nodes do <strong>exactly the same thing as Nodes 19–22</strong>, but for the <strong>event organizer</strong> instead of the venue. The workflow searches the Organizers table for the organizer the AI found. If they don't exist yet, a new organizer record is created. Then the organizer's unique ID is grabbed so it can be linked to the event.</p>
-      <div class="think-box">💭 This is why every event in your Airtable will always have both a venue AND an organizer properly linked — even if they're brand new ones the robot has never seen before.</div>
+      <p>Mirrors Nodes 19–22, but for the <strong>organizer</strong> instead of the venue. Searches the Organizers table for <code>organizer_name</code>, creates a new record (storing name, website, phone, category) if it doesn't exist, then resolves the correct ID as <code>_resolved_organizer_id</code>.</p>
     </div>
   </div>
 
-  <!-- Node 26 -->
+  <!-- Node: Format Event Name -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-code">26</div>
@@ -800,47 +604,46 @@ footer a{color:#fb923c;}
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>You have a specific naming format for events — it includes the date and city to prevent duplicate content problems on Google. For example: <em>"Trivia Night at Boris &amp; Horton – NYC – June 15 2025"</em>. This code node <strong>automatically formats the event name</strong> in exactly that way, every time, without you having to type it.</p>
-      <div class="think-box">💭 <strong>Why does this matter for Google?</strong> If 10 events are all just named "Trivia Night", Google gets confused and may not show any of them. Adding the date and city makes each event page unique, which is better for SEO (search rankings).</div>
+      <p>Builds the final, search-friendly event name in your exact format, e.g. <em>"Puppy Yoga @ Boris and Horton - 07/12/2026, New York, NY"</em>. It also generates the event tag, city, and state fields needed for the Airtable record.</p>
+      <div class="think-box">💭 Adding the date and city to every event name prevents duplicate-sounding titles, which helps each event page rank individually on Google.</div>
     </div>
   </div>
 
-  <!-- Node 27 -->
+  <!-- Node: Airtable Create Event -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-db">27</div>
-      <div class="node-name">Airtable – Create Event</div>
+      <div class="node-name">Airtable - Create Event</div>
       <div class="node-type-badge badge-db">Database</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>This is the moment of truth! All the collected and formatted data — event name, start date, end date, start time, end time, description, venue ID, organizer ID, website link, image URL — gets <strong>saved as a brand new record in your "Events and Experiences" table in Airtable.</strong></p>
-      <p style="margin-top:10px;">This is the automated version of you sitting down and manually typing all the event details into Airtable one row at a time. The robot does it in milliseconds, perfectly formatted, every time.</p>
+      <p>Saves the complete record into your Events &amp; Experiences table: start/end date, start/end time, description, notes, event type, confidence score, the linked venue ID, the linked organizer ID, and the flyer image. This is the moment the event officially exists in your database.</p>
     </div>
   </div>
 
-  <!-- Nodes 28-31: WordPress -->
+  <!-- Node: WordPress pipeline -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-wp">28–31</div>
-      <div class="node-name">WordPress Pipeline: Prep → Upload Image → Merge → Create Draft</div>
+      <div class="node-name">Prep WordPress Payload → Upload Image → Merge → Attach Image ID → Create Draft Event</div>
       <div class="node-type-badge badge-wp">WordPress</div>
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>These four nodes work as a team to <strong>publish the event to your WordPress website as a draft.</strong> Here's what each one does in plain terms:</p>
+      <p>Five nodes working as a team to publish the event as a draft on your website:</p>
       <ul style="margin:10px 0 10px 20px;font-size:15px;">
-        <li style="margin-bottom:8px;"><strong>Prep WordPress Payload:</strong> Converts the Airtable event data into the exact format that WordPress understands. Like translating from one language to another.</li>
-        <li style="margin-bottom:8px;"><strong>WordPress – Upload Image to Media:</strong> Uploads the resized, SEO-renamed flyer image directly to your WordPress Media Library.</li>
-        <li style="margin-bottom:8px;"><strong>Merge:</strong> Combines the event text data and the freshly uploaded image ID into one complete package to send to WordPress.</li>
-        <li style="margin-bottom:8px;"><strong>Attach WP Image ID:</strong> Links the uploaded image to the event draft as the featured image.</li>
-        <li><strong>WordPress – Create Draft Event:</strong> Creates the event inside your WordPress Events Calendar plugin as a <em>Draft</em> — not live yet, so you can review before publishing.</li>
+        <li style="margin-bottom:8px;"><strong>Prep WordPress Payload:</strong> Converts the Airtable data into the title, content, and excerpt format WordPress expects.</li>
+        <li style="margin-bottom:8px;"><strong>WordPress - Upload Image to Media:</strong> Uploads the resized, SEO-named flyer to your WordPress Media Library and returns a <code>media_id</code>.</li>
+        <li style="margin-bottom:8px;"><strong>Merge:</strong> Combines the event text data with the uploaded media ID into one package.</li>
+        <li style="margin-bottom:8px;"><strong>Attach WP Image ID:</strong> Sets the uploaded image as the <code>featured_media</code> for the post.</li>
+        <li><strong>WordPress - Create Draft Event:</strong> Creates the post with status <code>draft</code> — never published automatically.</li>
       </ul>
-      <div class="think-box">💭 Events are saved as <strong>Drafts</strong> on purpose. This gives you a chance to do a final quality check before anything goes live on your website. The robot does all the data entry; you do the final review and click Publish when you're happy with it.</div>
+      <div class="think-box">💭 It's always saved as a Draft on purpose, so you get the final say before anything goes live.</div>
     </div>
   </div>
 
-  <!-- Nodes 32-33: Loop Completion -->
+  <!-- Node: Loop control -->
   <div class="node-card">
     <div class="node-header" onclick="toggleNode(this)">
       <div class="node-num color-loop">32–33</div>
@@ -849,58 +652,54 @@ footer a{color:#fb923c;}
       <div class="expand-icon">▼</div>
     </div>
     <div class="node-body">
-      <p>These are the final two nodes in each cycle of the loop:</p>
-      <ul style="margin:10px 0 10px 20px;font-size:15px;">
-        <li style="margin-bottom:8px;"><strong>Update Resource Last Checked:</strong> Goes back to the Event Resources table in Airtable and updates the "Last Checked" field for this Instagram account to today's date. This way you always know exactly when each account was last reviewed.</li>
-        <li><strong>Continue Loop:</strong> Signals to the system that this post is done! The workflow goes back to the batch queue (Node 7 for the next post, or Node 3 for the next account) and repeats the entire process for the next item.</li>
-      </ul>
-      <div class="think-box">💭 This loop continues until every "Is Active" + "Great" Instagram account has been fully processed. Once all accounts are done, the workflow finishes quietly and waits until the next scheduled run (Mon/Wed/Fri 9AM).</div>
+      <p><strong>Update Resource Last Checked:</strong> Flips "Checked This Week" from "uncheck" to "checked" for this Instagram account in the Event Resources table — marking it as processed.</p>
+      <p style="margin-top:8px;"><strong>Continue Loop:</strong> Sends the workflow back to "Split In Batches" to grab the next Instagram account in the queue, and the whole cycle repeats.</p>
+      <div class="think-box">💭 This keeps going until every account in your list has been processed, then the workflow finishes and waits for the next scheduled run.</div>
     </div>
   </div>
 
-</div><!-- /nodes section -->
+</div><!-- /nodes -->
 
 <hr class="big-divider">
 
-<!-- AI BRAIN DEEP DIVE -->
+<!-- AI BRAIN -->
 <div class="step-section" id="ai-brain">
   <span class="section-label">Deep Dive</span>
   <div class="section-title">How the AI actually "sees" Instagram images</div>
-  <p class="section-desc">This is the most impressive part of the whole system. Here's exactly what happens when Gemini reads an event flyer.</p>
+  <p class="section-desc">This is the most impressive part of the system. Here's exactly what happens when Gemini reads an event flyer.</p>
 
   <div class="card">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
       <div>
         <div style="font-weight:700;color:var(--navy);margin-bottom:12px;font-size:16px;">📸 What the AI receives:</div>
         <ul style="font-size:14px;list-style:none;">
-          <li style="padding:6px 0;border-bottom:1px solid var(--border);">🖼️ The actual image file (the flyer or post photo)</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">🖼️ The flyer image (and carousel slides, if any)</li>
           <li style="padding:6px 0;border-bottom:1px solid var(--border);">📝 The Instagram caption text</li>
-          <li style="padding:6px 0;">🔗 The original post URL</li>
+          <li style="padding:6px 0;">📍 The location tag and post timestamp</li>
         </ul>
       </div>
       <div>
         <div style="font-weight:700;color:var(--navy);margin-bottom:12px;font-size:16px;">📤 What the AI sends back:</div>
         <ul style="font-size:14px;list-style:none;">
-          <li style="padding:6px 0;border-bottom:1px solid var(--border);">✅ is_event: true or false</li>
-          <li style="padding:6px 0;border-bottom:1px solid var(--border);">🎯 confidence: 0.0 – 1.0 (how sure it is)</li>
-          <li style="padding:6px 0;border-bottom:1px solid var(--border);">📅 event_date, start_time, end_time</li>
-          <li style="padding:6px 0;border-bottom:1px solid var(--border);">📍 venue_name, organizer_name</li>
-          <li style="padding:6px 0;">📝 description, website_url</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">✅ is_event + confidence score</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">📅 start_date, start_time, end_time</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">📍 venue_name, city, organizer info</li>
+          <li style="padding:6px 0;">📝 description, note, event_type</li>
         </ul>
       </div>
     </div>
     <div class="alert alert-info" style="margin-top:20px;">
       <div class="alert-icon">🧠</div>
-      <div><strong>Vision AI explained simply:</strong> Gemini 2.5 Flash is what's called a "multimodal" AI — "multimodal" just means it can handle more than one type of input at the same time (both text AND images). When you send it an event flyer image, it processes the pixels the same way your eyes do, and reads any text it sees on that image. This is called OCR (Optical Character Recognition) combined with AI understanding. So it doesn't just read the words — it understands what they mean. "7 PM Saturday" + a photo of a dog bar = "this is a dog-friendly evening event."</div>
+      <div><strong>Vision AI explained simply:</strong> Gemini 2.5 Flash is "multimodal," meaning it can process images and text at the same time. When it receives a flyer, it reads the pixels visually — the same way your eyes would — and recognizes any printed text. This is OCR (Optical Character Recognition) combined with understanding: it doesn't just read "7 PM Saturday," it understands that means an upcoming event.</div>
     </div>
   </div>
 </div>
 
 <hr class="big-divider">
 
-<!-- RUNNING THE WORKFLOW -->
+<!-- RUNNING -->
 <div class="step-section" id="running">
-  <span class="section-label">Step 4</span>
+  <span class="section-label">Step 3</span>
   <div class="section-title">How to import, connect, and run the workflow</div>
 
   <div class="card">
@@ -908,39 +707,33 @@ footer a{color:#fb923c;}
       <div class="tl-item">
         <div class="tl-dot">1</div>
         <div class="tl-time">One-time setup</div>
-        <div class="tl-title">Import the workflow JSON file into n8n</div>
-        <div class="tl-desc">Open n8n → Click the "+" to add a new workflow → Click the three-dot menu → "Import from file" → Select the <code>JetSetPets-Workflow.json</code> file. All nodes will appear automatically.</div>
+        <div class="tl-title">Import the workflow JSON into n8n</div>
+        <div class="tl-desc">Open n8n → click "+" to add a new workflow → three-dot menu → "Import from file" → select your <code>Jet-Set-Automation.json</code> file.</div>
       </div>
       <div class="tl-item">
         <div class="tl-dot">2</div>
         <div class="tl-time">One-time setup</div>
-        <div class="tl-title">Add all your API credentials</div>
-        <div class="tl-desc">Click each node that has a yellow warning sign → Click the credential dropdown → Select "Create new credential" → Paste your API key → Save. Do this for Airtable, Apify (Header Auth), Google Gemini (or OpenAI), and WordPress.</div>
+        <div class="tl-title">Add your 4 credentials</div>
+        <div class="tl-desc">Click each node with a yellow warning sign → select or create the matching credential → Save. See Step 1 above for exactly where to get each key.</div>
       </div>
       <div class="tl-item">
         <div class="tl-dot">3</div>
-        <div class="tl-time">One-time setup</div>
-        <div class="tl-title">Update your Airtable Base ID in every Airtable node</div>
-        <div class="tl-desc">Click any Airtable node → Change the "Base" to your own Airtable base → Update the "Table" to match the exact table name you created. Repeat for every Airtable node in the workflow.</div>
+        <div class="tl-time">First run only</div>
+        <div class="tl-title">Test each node one by one</div>
+        <div class="tl-desc">For your very first run, test each node individually to confirm credentials are working. This usually takes 1–2 hours.</div>
       </div>
       <div class="tl-item">
         <div class="tl-dot">4</div>
-        <div class="tl-time">First run only — testing</div>
-        <div class="tl-title">Test each node one by one to verify credentials</div>
-        <div class="tl-desc">For your very first test, it's smart to click each node individually and run "Test step" to confirm each credential is connected and working. This catches any errors before running the full workflow. This usually takes 1–2 hours to go through all nodes. You only need to do this once — after your credentials are confirmed, you never need to do it again.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot">5</div>
-        <div class="tl-time">Go live!</div>
-        <div class="tl-title">Click "Execute Workflow" once — or turn it Active for automatic running</div>
-        <div class="tl-desc">To run it right now manually: click the <strong>"Execute Workflow"</strong> button. To have it run automatically every Mon/Wed/Fri: click the <strong>"Inactive" toggle</strong> at the top to switch it to <strong>"Active"</strong>. Once Active, you never need to press anything again — the Schedule Trigger (Node 1) takes over completely.</div>
+        <div class="tl-time">Go live</div>
+        <div class="tl-title">Run it once, then activate</div>
+        <div class="tl-desc">Click <strong>"Execute Workflow"</strong> to run it manually anytime. To make it run automatically, click the <strong>"Inactive"</strong> toggle at the top to switch it to <strong>"Active"</strong>. The Schedule Trigger then takes over completely.</div>
       </div>
     </div>
   </div>
 
   <div class="alert alert-success">
     <div class="alert-icon">🎉</div>
-    <div><strong>After activating:</strong> You never have to press "Execute" again. The Schedule Trigger wakes the robot up automatically three times a week. The robot does all the work, saves events to Airtable, creates WordPress drafts, and goes back to sleep. You just log in to review events and publish them when ready.</div>
+    <div><strong>After activating:</strong> You never have to press Execute again. The robot wakes itself up three times a week, does everything, and goes back to sleep. You just log in to review and publish.</div>
   </div>
 </div>
 
@@ -950,19 +743,19 @@ footer a{color:#fb923c;}
 <div class="step-section" id="timeline">
   <span class="section-label">Setup Timeline</span>
   <div class="section-title">How long will this take to set up?</div>
-  <p class="section-desc">Total setup time: <strong>8–12 hours</strong> for a first-time builder. Don't rush it. Here's how to break it across a few days.</p>
+  <p class="section-desc">Total setup time: <strong>8–12 hours</strong> for a first-time builder.</p>
 
   <div class="card">
     <table class="data-table">
       <thead><tr><th>Task</th><th>Estimated Time</th><th>Difficulty</th></tr></thead>
       <tbody>
-        <tr><td>Create Airtable tables and all fields</td><td>1–2 hours</td><td>🟢 Easy</td></tr>
-        <tr><td>Sign up for Apify, save the actor with placeholder URL</td><td>20 minutes</td><td>🟢 Easy</td></tr>
-        <tr><td>Get Google Gemini API key (or OpenAI)</td><td>10 minutes</td><td>🟢 Easy</td></tr>
+        <tr><td>Get Airtable API token</td><td>10 minutes</td><td>🟢 Easy</td></tr>
+        <tr><td>Sign up for Apify, save actor with placeholder URL</td><td>20 minutes</td><td>🟢 Easy</td></tr>
+        <tr><td>Get Google Gemini API key</td><td>10 minutes</td><td>🟢 Easy</td></tr>
         <tr><td>Set up WordPress Application Password</td><td>15 minutes</td><td>🟢 Easy</td></tr>
         <tr><td>Import JSON workflow into n8n</td><td>10 minutes</td><td>🟢 Easy</td></tr>
-        <tr><td>Connect all credentials in n8n</td><td>1 hour</td><td>🟡 Medium</td></tr>
-        <tr><td>Add your Instagram URLs to Airtable Event Resources</td><td>1–2 hours</td><td>🟢 Easy</td></tr>
+        <tr><td>Connect all 4 credentials in n8n</td><td>1 hour</td><td>🟡 Medium</td></tr>
+        <tr><td>Add your Instagram URLs to Event Resources</td><td>1–2 hours</td><td>🟢 Easy</td></tr>
         <tr><td>Test each node one by one (first time only)</td><td>2–4 hours</td><td>🟡 Medium</td></tr>
         <tr><td>Fix any errors and re-test</td><td>1–2 hours</td><td>🟡 Medium</td></tr>
         <tr><td><strong>Activate the workflow 🎉</strong></td><td><strong>5 minutes</strong></td><td><strong>🟢 Easy</strong></td></tr>
@@ -972,7 +765,7 @@ footer a{color:#fb923c;}
 
   <div class="alert alert-warn">
     <div class="alert-icon">💡</div>
-    <div><strong>Pro tip — split across 3 days:</strong> Day 1: Build Airtable tables + get all API keys. Day 2: Import workflow, connect credentials, test nodes one by one. Day 3: Fix any issues + go live. Trying to do it all in one sitting leads to mistakes and frustration.</div>
+    <div><strong>Pro tip — split across 3 days:</strong> Day 1: Get all 4 API keys. Day 2: Import workflow, connect credentials, test nodes one by one. Day 3: Fix any issues + go live.</div>
   </div>
 </div>
 
@@ -982,36 +775,30 @@ footer a{color:#fb923c;}
 <div class="step-section" id="troubleshooting">
   <span class="section-label">Help</span>
   <div class="section-title">Common problems and how to fix them</div>
-  <p class="section-desc">Something not working? Find your error below.</p>
 
   <div class="card card-sm" style="margin-bottom:12px;">
     <div style="font-weight:700;color:#dc2626;margin-bottom:6px;">❌ "Airtable node shows no results / zero accounts found"</div>
-    <div style="font-size:14px;color:var(--text-muted);">Check that at least one row in your Event Resources table has BOTH: <strong>"Is Active" ticked ✓</strong> AND <strong>"Info Quality" set exactly to "Great"</strong>. Both conditions must be true. If either is missing, the filter returns zero rows and the whole workflow stops early.</div>
+    <div style="font-size:14px;color:var(--text-muted);">Check that at least one row in Event Resources has "Checked This Week" set to "uncheck". If every row is already "checked," the filter returns zero rows until the next reset.</div>
   </div>
 
   <div class="card card-sm" style="margin-bottom:12px;">
     <div style="font-weight:700;color:#dc2626;margin-bottom:6px;">❌ "Apify returns empty results"</div>
-    <div style="font-size:14px;color:var(--text-muted);">First, check that you did the Apify actor setup — open the actor in your Apify console, go to the Input tab, make sure there's a placeholder URL saved (NOT the default one Apify put in). Also verify the Instagram URL in your Airtable is the full profile URL (e.g. <code>https://www.instagram.com/borisandhorton</code>). Also check the account is public and exists.</div>
+    <div style="font-size:14px;color:var(--text-muted);">Confirm you saved the actor with a placeholder URL (not the original default) and clicked Save only — not Save &amp; Run. Also check the Instagram username is spelled correctly and the account is public.</div>
   </div>
 
   <div class="card card-sm" style="margin-bottom:12px;">
-    <div style="font-weight:700;color:#dc2626;margin-bottom:6px;">❌ "AI agent returns no event data or weird results"</div>
-    <div style="font-size:14px;color:var(--text-muted);">Check that your Gemini API key (or OpenAI key) is added correctly in n8n credentials. Also check that the image was downloaded successfully in Node 8 — if the image link expired, the AI has nothing to look at. This is normal for some posts.</div>
-  </div>
-
-  <div class="card card-sm" style="margin-bottom:12px;">
-    <div style="font-weight:700;color:#dc2626;margin-bottom:6px;">❌ "Event Start Time / End Time is showing an error"</div>
-    <div style="font-size:14px;color:var(--text-muted);">Remember these fields were changed to <strong>Single line text</strong> in Airtable. If you set them as Date or Time field types, the robot won't be able to write plain text like "7:00 PM" into them. Open Airtable → click the field name → change the field type to "Single line text".</div>
+    <div style="font-weight:700;color:#dc2626;margin-bottom:6px;">❌ "Gemini AI returns no event data or a 429 error"</div>
+    <div style="font-size:14px;color:var(--text-muted);">A 429 error means too many requests were sent too quickly — the "Wait" node (30 seconds) should prevent this, but if it still happens, try increasing the wait time slightly. Also confirm your Gemini API key is connected correctly.</div>
   </div>
 
   <div class="card card-sm" style="margin-bottom:12px;">
     <div style="font-weight:700;color:#dc2626;margin-bottom:6px;">❌ "WordPress draft is not being created"</div>
-    <div style="font-size:14px;color:var(--text-muted);">Check your WordPress Application Password. Make sure the <strong>"The Events Calendar"</strong> plugin is installed and active on your WordPress site — the workflow uses that plugin's event post type. Also check that Pretty Permalinks are enabled: WordPress Admin → Settings → Permalinks → Post name → Save.</div>
+    <div style="font-size:14px;color:var(--text-muted);">Check your WordPress Application Password is correct and that the Events Calendar plugin (or your events post type) is active on your site.</div>
   </div>
 
   <div class="card card-sm">
-    <div style="font-weight:700;color:#dc2626;margin-bottom:6px;">❌ "Red node errors — workflow stops partway through"</div>
-    <div style="font-size:14px;color:var(--text-muted);">Click the red node. An error message will appear explaining exactly what went wrong. The most common causes are: wrong credential selected, wrong Base ID in an Airtable node, or an Instagram image link that expired. Read the error message carefully — it usually tells you exactly what to fix.</div>
+    <div style="font-weight:700;color:#dc2626;margin-bottom:6px;">❌ "Red node errors mid-run"</div>
+    <div style="font-size:14px;color:var(--text-muted);">Click the red node — the error message usually tells you exactly what's wrong. Most common causes: wrong credential selected, or an Instagram image link that expired before it could be downloaded.</div>
   </div>
 </div>
 
@@ -1021,38 +808,25 @@ footer a{color:#fb923c;}
 <div class="step-section" id="checklist">
   <span class="section-label">Final Verification</span>
   <div class="section-title">Complete Setup Checklist</div>
-  <p class="section-desc">Check off every item below to confirm your system is fully set up. Click each item to tick it.</p>
+  <p class="section-desc">Check off every item below to confirm your system is fully set up.</p>
 
   <div class="card">
-    <div class="final-check" id="finalCheck">
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Airtable account created</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> "Jet Set Pets Events" base created</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Event Resources table set up (all fields)</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Events and Experiences table set up</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Event Start Time = Single line text ✓</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Event End Time = Single line text ✓</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Venues table set up</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Organizers table set up</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Tables linked to each other correctly</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Airtable API token saved</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Airtable Base ID saved</div>
+    <div class="final-check">
+      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Airtable API token created and saved</div>
       <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Apify account created</div>
       <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Apify actor saved with placeholder URL</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Apify "Save" only clicked (NOT Save & Run)</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Apify API token saved</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Gemini API key (or OpenAI) saved</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> WordPress Events Calendar plugin active</div>
+      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Clicked "Save" only (not Save &amp; Run)</div>
+      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Apify API token copied</div>
+      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Gemini API key created</div>
       <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> WordPress Application Password generated</div>
       <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> n8n account ready</div>
       <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Workflow JSON imported into n8n</div>
       <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Airtable credential added in n8n</div>
       <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Apify credential added in n8n</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Gemini (or OpenAI) credential added in n8n</div>
+      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Gemini credential added in n8n</div>
       <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> WordPress credential added in n8n</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Base ID updated in all Airtable nodes</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> WordPress site URL updated in nodes</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> At least 5 Instagram URLs added to Airtable</div>
-      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Those 5 rows marked Is Active ✓ + Info Quality: Great</div>
+      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> At least 5 Instagram URLs added to Event Resources</div>
+      <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Those 5 rows marked "Checked This Week" = uncheck</div>
       <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Tested nodes one by one — all green</div>
       <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> New events appeared in Airtable</div>
       <div class="fc-item" onclick="toggleCheck(this)"><div class="fc-check"></div> Draft events appeared in WordPress</div>
@@ -1061,7 +835,7 @@ footer a{color:#fb923c;}
 
     <div class="alert alert-success">
       <div class="alert-icon">🎉</div>
-      <div><strong>All checked? You're live!</strong> Your robot will now automatically discover dog-friendly events from Instagram, have the AI extract all the details, store them in Airtable for your review, and create draft posts on your WordPress website — all on autopilot, three times a week.</div>
+      <div><strong>All checked? You're live!</strong> Your system now discovers dog-friendly events from Instagram automatically, has Gemini extract every detail, saves clean records to Airtable, and creates WordPress drafts for your review — three times a week, with no manual work.</div>
     </div>
   </div>
 </div>
@@ -1069,9 +843,7 @@ footer a{color:#fb923c;}
 </div><!-- /container -->
 
 <footer>
-  <div>Built for <strong>Jet Set Pets (jetsetpets.com)</strong> — Christi's Dog-Friendly Events Guide</div>
-  <div style="margin-top:6px;">Automation designed by <strong>Victoria Automation</strong> 
-  <div style="margin-top:6px;font-size:11px;opacity:.5;">n8n · Airtable · Gemini 2.5 Flash / OpenAI · Apify · WordPress</div>
+  <div>Jet Set Pets Automation — n8n · Airtable · Gemini 2.5 Flash · Apify · WordPress</div>
 </footer>
 
 <script>
